@@ -5,7 +5,6 @@ plugins {
 group 'steve.framework'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -21,6 +20,7 @@ configure(':homework') {
     apply from: file("${rootDir}/gradle/app.gradle")
     dependencies {
         implementation "core.framework:core-ng:${coreNGVersion}"
+        runtimeOnly 'mysql:mysql-connector-java:8.0.17'
         testImplementation "core.framework:core-ng-test:${coreNGVersion}"
     }
 }

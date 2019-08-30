@@ -1,5 +1,9 @@
 import app.HomeworkServiceApp;
+import app.domain.Cinema;
+import app.service.CinemaService;
 import app.service.Painter;
+import core.framework.db.DBEnumValue;
+import core.framework.db.Query;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,12 +11,15 @@ import java.util.List;
 /**
  * @author steve
  */
+
 public class Main {
     public static void main(String[] args) {
         HomeworkServiceApp app = new HomeworkServiceApp();
         app.start();
-        Painter painter = app.bean(Painter.class);
+        Painter painter = app.bean(Painter.class); // singleton bean
         painter.draw();
-        List<String> strings = Arrays.asList("abc", "hello");
+        CinemaService cinemaService = app.bean(CinemaService.class);
+        Cinema cinemaById = cinemaService.getCinemaById(1);
+        System.out.println(cinemaById);
     }
 }
