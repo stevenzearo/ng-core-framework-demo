@@ -1,10 +1,7 @@
 import app.HomeworkServiceApp;
 import app.service.Painter;
-import core.framework.util.Lists;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
