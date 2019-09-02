@@ -2,6 +2,7 @@ package app;
 
 import core.framework.module.App;
 import core.framework.module.SystemModule;
+import core.framework.mongo.module.MongoConfig;
 
 /**
  * @author steve

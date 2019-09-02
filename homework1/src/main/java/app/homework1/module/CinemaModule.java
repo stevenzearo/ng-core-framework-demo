@@ -13,5 +13,6 @@ public class CinemaModule extends Module {
     protected void initialize() {
         db().repository(Cinema.class);
         bind(CinemaService.class);
+
     }
 }
