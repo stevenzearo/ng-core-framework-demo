@@ -1,26 +1,45 @@
 plugins {
     id 'java'
 }
+subprojects {
+    group 'steve.framework.homework'
+    version '1.0-SNAPSHOT'
 
-group 'steve.framework'
-version '1.0-SNAPSHOT'
-
-
-repositories {
-    mavenCentral()
-    maven {
-        url 'https://neowu.github.io/maven-repo/'
-        content {
-            includeGroupByRegex 'core\\.framework.*'
+    repositories {
+        mavenCentral()
+        maven {
+            url 'https://neowu.github.io/maven-repo/'
+            content {
+                includeGroupByRegex 'core\\.framework.*'
+            }
         }
     }
 }
+
+
 def coreNGVersion = '7.0.0'
-configure(':homework') {
+configure(project(':homework1')) {
     apply from: file("${rootDir}/gradle/app.gradle")
     dependencies {
         implementation "core.framework:core-ng:${coreNGVersion}"
         runtimeOnly 'mysql:mysql-connector-java:8.0.17'
         testImplementation "core.framework:core-ng-test:${coreNGVersion}"
+    }
+}
+
+configure(project(':mysqltest')) {
+    apply from: file("${rootDir}/gradle/app.gradle")
+    dependencies {
+        implementation "core.framework:core-ng:${coreNGVersion}"
+        runtimeOnly 'mysql:mysql-connector-java:8.0.17'
+        testImplementation "core.framework:core-ng-test:${coreNGVersion}"
+    }
+}
+
+configure(project(':mongotest')) {
+    apply from: file("${rootDir}/gradle/app.gradle")
+    dependencies {
+        implementation "core.framework:core-ng:${coreNGVersion}"
+        implementation "core.framework:core-ng-mongo:${coreNGVersion}"
     }
 }

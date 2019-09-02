@@ -10,6 +10,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/homework1" />
+            <option value="$PROJECT_DIR$/mongotest" />
+            <option value="$PROJECT_DIR$/mysqltest" />
           </set>
         </option>
         <option name="useQualifiedModuleNames" value="true" />

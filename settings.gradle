@@ -1,2 +1,5 @@
 rootProject.name = 'homework'
+include 'homework1'
+include 'mongotest'
+include 'mysqltest'
 
