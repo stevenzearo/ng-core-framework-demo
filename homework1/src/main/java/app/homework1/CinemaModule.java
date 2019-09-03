@@ -1,4 +1,4 @@
-package app.homework1.module;
+package app.homework1;
 
 import app.homework1.domain.Cinema;
 import app.homework1.service.CinemaService;

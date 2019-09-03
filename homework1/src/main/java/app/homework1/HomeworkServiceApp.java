@@ -1,9 +1,6 @@
 package app.homework1;
 
 import app.homework1.domain.Cinema;
-import app.homework1.domain.Brush;
-import app.homework1.module.CinemaModule;
-import app.homework1.module.PainterModule;
 import app.homework1.service.CinemaService;
 import app.homework1.service.Painter;
 import core.framework.module.App;

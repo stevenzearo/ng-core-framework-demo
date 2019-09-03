@@ -1,4 +1,4 @@
-package app.homework1.module;
+package app.homework1;
 
 import app.homework1.domain.Brush;
 import app.homework1.service.Painter;

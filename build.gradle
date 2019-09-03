@@ -43,3 +43,27 @@ configure(project(':mongotest')) {
         implementation "core.framework:core-ng-mongo:${coreNGVersion}"
     }
 }
+
+configure(project(':userinfo-service-interface')) {
+    apply from: file("${rootDir}/gradle/app.gradle")
+    dependencies {
+        implementation "core.framework:core-ng-api:${coreNGVersion}"
+    }
+}
+
+configure(project(':userinfo-service')) {
+    apply from: file("${rootDir}/gradle/app.gradle")
+    dependencies {
+        implementation project(':userinfo-service-interface')
+        runtimeOnly 'mysql:mysql-connector-java:8.0.15'
+        implementation "core.framework:core-ng-mongo:${coreNGVersion}"
+    }
+}
+
+configure(project(':cinema-bo-service')) {
+    apply from: file("${rootDir}/gradle/app.gradle")
+    dependencies {
+        implementation "core.framework:core-ng:${coreNGVersion}"
+        implementation "core.framework:core-ng-mongo:${coreNGVersion}"
+    }
+}

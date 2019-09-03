@@ -1,4 +1,4 @@
-package app.homework1.domain;
+package app.mysqltest.domain;
 
 import core.framework.api.validate.NotNull;
 import core.framework.db.Column;
@@ -9,25 +9,24 @@ import core.framework.db.Table;
  * @author steve
  */
 
-@Table(name = "cinemas")
-public class Cinema {
-    @PrimaryKey
+public class CinemaView {
     @NotNull
     @Column(name = "id")
-    public Integer cinemaId;
+    public Integer id;
 
-    @Column(name = "name")
+    @Column(name = "cinema_name")
     @NotNull
     public String cinemaName;
 
     @Column(name = "address")
-    public String cinemaAddress;
+    public String address;
 
     @Column(name = "phone")
-    public String cinemaPhone;
+    public String phone;
 
-    @Column(name = "zone_id")
-    @NotNull
-    public Integer cinemaZoneId;
+    @Column(name = "zone_name")
+    public String zoneName;
 
+    @Column(name = "city_name")
+    public String cityName;
 }

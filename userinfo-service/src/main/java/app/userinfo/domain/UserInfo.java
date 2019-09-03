@@ -1,4 +1,4 @@
-package app.mysqltest.domain;
+package app.userinfo.domain;
 
 import core.framework.api.validate.NotBlank;
 import core.framework.api.validate.NotNull;

@@ -19,40 +19,26 @@ public class UserInfoService {
     @Inject
     private Repository<UserInfo> userInfoRepository;
 
-    public boolean addUserInfo() {
+    public Integer addUserInfo() {
         UserInfo userInfo = new UserInfo();
         OptionalLong insert = userInfoRepository.insert(userInfo);
-        return insert.isEmpty();
+        return userInfo.id;
     }
 
-    public boolean updateUserInfo() {
-        UserInfo userInfo = new UserInfo();
-        Optional<UserInfo> userInfo1 = userInfoRepository.get(userInfo.userId);
-        try {
-            UserInfo userInfo2 = userInfo1.orElseThrow(() -> new NotFoundException("userInfo not found, userInfo = " + userInfo.userId));
-            userInfo2.userName = "";
-            userInfo2.userPwd = "";
-            userInfo2.userPhone = "";
-            userInfo2.userBirthday = LocalDate.now();
-            userInfoRepository.partialUpdate(userInfo);
+    public void updateUserInfo(UserInfo userInfo) {
 
-        } catch (NotFoundException e) {
-            e.printStackTrace();
-            return false;
-        }
+        UserInfo userInfo2 = userInfoRepository.get(userInfo.id)
+            .orElseThrow(() -> new NotFoundException("userInfo not found, userInfo = " + userInfo.id));
 
-        return true;
+        userInfo2.name = "steve";
+        userInfo2.password = "123456";
+        userInfo2.phone = "13812341234";
+        userInfo2.birthday = LocalDate.now();
+        userInfoRepository.partialUpdate(userInfo);
     }
 
-    public boolean deleteUserInfo(Integer userId) {
-        try {
-            userInfoRepository.get(userId).orElseThrow(() -> new NotFoundException("userInfo not found, where userId = " + userId));
-        } catch (NotFoundException e) {
-            e.printStackTrace();
-            return false;
-        }
-
-        return true;
+    public void deleteUserInfo(Integer userId) {
+        userInfoRepository.delete(userId);
     }
 
     public UserInfo getUserInfoById(Integer userId) {

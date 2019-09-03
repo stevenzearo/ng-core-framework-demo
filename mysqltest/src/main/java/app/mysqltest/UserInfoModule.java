@@ -1,4 +1,4 @@
-package app.mysqltest.module;
+package app.mysqltest;
 
 import app.mysqltest.domain.UserInfo;
 import app.mysqltest.service.UserInfoService;

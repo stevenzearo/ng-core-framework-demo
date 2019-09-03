@@ -18,21 +18,21 @@ public class Movie {
 
     @PrimaryKey(autoIncrement = true)
     @NotNull
-    @Column(name = "movie_id")
-    public Integer movieId;
+    @Column(name = "id")
+    public Integer id;
 
     @NotNull
-    @Column(name = "movie_name")
-    public String movieName;
+    @Column(name = "name")
+    public String name;
 
-    @Column(name = "movie_country")
-    public String movieCountry;
+    @Column(name = "country")
+    public String country;
 
-    @Column(name = "movie_minutes")
-    public Integer movieMinutes;
+    @Column(name = "minutes")
+    public Integer minutes;
 
-    @Column(name = "movie_language")
-    public String movieLanguage;
+    @Column(name = "language")
+    public String language;
 
     @Column(name = "introduce")
     public String introduce;
@@ -41,20 +41,6 @@ public class Movie {
     public LocalDateTime onlineTime;
 
     @NotNull
-    @Column(name = "movie_status")
-    public MovieStatus movieStatus;
-
-    @Override
-    public String toString() {
-        return "Movie{" +
-            "movieId=" + movieId +
-            ", movieName='" + movieName + '\'' +
-            ", movieCountry='" + movieCountry + '\'' +
-            ", movieMinutes=" + movieMinutes +
-            ", movieLanguage='" + movieLanguage + '\'' +
-            ", introduce='" + introduce + '\'' +
-            ", onlineTime=" + onlineTime +
-            ", movieStatus=" + movieStatus +
-            '}';
-    }
+    @Column(name = "status")
+    public MovieStatus status;
 }
