@@ -16,7 +16,6 @@ subprojects {
     }
 }
 
-
 def coreNGVersion = '7.0.0'
 configure(project(':homework1')) {
     apply from: file("${rootDir}/gradle/app.gradle")
@@ -64,6 +63,7 @@ configure(project(':cinema-bo-service')) {
     apply from: file("${rootDir}/gradle/app.gradle")
     dependencies {
         implementation "core.framework:core-ng:${coreNGVersion}"
+        runtimeOnly 'mysql:mysql-connector-java:8.0.15'
         implementation "core.framework:core-ng-mongo:${coreNGVersion}"
     }
 }

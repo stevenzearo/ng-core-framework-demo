@@ -25,7 +25,7 @@ public class UserInfoService {
         return null;
     }
 
-    public SearchUserInfoResponse searchUserInfoByNameFuzzily(SearchUserInfoRequest request) {
+    public SearchUserInfoResponse searchByNameFuzzily(SearchUserInfoRequest request) {
 
         SearchUserInfoResponse response = new SearchUserInfoResponse();
         Query<UserInfo> query = repository.select();
@@ -39,20 +39,21 @@ public class UserInfoService {
         return response;
     }
 
-    public UserInfoView getUserInfoById(Integer id) {
+    public UserInfoView get(Integer id) {
         return view(repository.get(id).orElseThrow(() -> new NotFoundException("userInfo not found, id = " + id)));
     }
 
-    public UserInfoView updateUserInfo(Integer id, UpdateUserInfoRequest request) {
+    public UserInfoView update(Integer id, UpdateUserInfoRequest request) {
         UserInfo userInfo = repository.get(id).orElseThrow(() -> new NotFoundException("userInfo not found, id = " + id));
         userInfo.name = request.name;
         userInfo.password = request.password;
         userInfo.birthday = request.birthday;
         userInfo.img = request.img;
+        repository.partialUpdate(userInfo);
         return view(userInfo);
     }
 
-    public UserInfoView deleteUserInfo(Integer id) {
+    public UserInfoView delete(Integer id) {
         UserInfo userInfo = repository.get(id).orElseThrow(() -> new NotFoundException("userInfo not found, id = " + id));
         repository.delete(id);
         return view(userInfo);

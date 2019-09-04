@@ -23,7 +23,7 @@ public class MysqlTestApp extends App {
 //            userInfoService.getUserInfoListByName("%s%").forEach(System.out::println);
 
             CinemaService cinemaService = bean(CinemaService.class);
-            List<CinemaView> cinemaViewList = cinemaService.getCinemaByName("%SFC%");
+            List<CinemaView> cinemaViewList = cinemaService.searchCinemaListByNameFuzzily("SFC");
             cinemaViewList.forEach(System.out::println);
 
 

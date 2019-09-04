@@ -17,17 +17,18 @@ public class SearchUserInfoRequest {
 
     @NotNull
     @Property(name = "limit")
-    public Integer limit = 1000;
+    public Integer limit = 10;
 
     @Property(name = "name")
     public String name;
 
+    @Deprecated
     @Property(name = "password")
     public String password;
-
+    @Deprecated
     @Property(name = "birthday")
     public LocalDate birthday;
-
+    @Deprecated
     @Property(name = "phone")
     public String phone;
 }

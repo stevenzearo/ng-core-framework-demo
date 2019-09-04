@@ -21,22 +21,22 @@ public class UserInfoWebServiceImpl implements UserInfoWebService {
         return userInfoService.create(request);
     }
 
-    public SearchUserInfoResponse searchUserInfoByNameFuzzily(SearchUserInfoRequest request) {
-        return userInfoService.searchUserInfoByNameFuzzily(request);
+    public SearchUserInfoResponse searchByNameFuzzily(SearchUserInfoRequest request) {
+        return userInfoService.searchByNameFuzzily(request);
     }
 
     @Override
-    public UserInfoView getUserInfoById(Integer id) {
-        return userInfoService.getUserInfoById(id);
+    public UserInfoView get(Integer id) {
+        return userInfoService.get(id);
     }
 
     @Override
-    public UserInfoView updateUserInfo(Integer id, UpdateUserInfoRequest request) {
-        return userInfoService.updateUserInfo(id, request);
+    public void update(Integer id, UpdateUserInfoRequest request) {
+        userInfoService.update(id, request);
     }
 
     @Override
-    public UserInfoView deleteUserInfo(Integer id) {
-        return userInfoService.deleteUserInfo(id);
+    public void delete(Integer id) {
+        userInfoService.delete(id);
     }
 }

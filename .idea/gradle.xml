@@ -13,7 +13,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/cinema-bo-service" />
-            <option value="$PROJECT_DIR$/cinema-bo-service-interface" />
             <option value="$PROJECT_DIR$/homework1" />
             <option value="$PROJECT_DIR$/mongotest" />
             <option value="$PROJECT_DIR$/mysqltest" />

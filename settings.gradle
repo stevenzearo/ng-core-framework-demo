@@ -3,6 +3,5 @@ include 'mongotest'
 include 'mysqltest'
 include 'userinfo-service-interface'
 include 'userinfo-service'
-include 'cinema-bo-service-interface'
 include 'cinema-bo-service'
 
