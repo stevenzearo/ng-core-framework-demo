@@ -18,7 +18,6 @@ import core.framework.api.web.service.ResponseStatus;
  * @author steve
  */
 public interface UserInfoWebService {
-//todo replace _ to -
     @POST
     @Path("/user")
     @ResponseStatus(HTTPStatus.CREATED)
