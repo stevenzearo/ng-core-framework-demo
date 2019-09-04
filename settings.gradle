@@ -1,7 +1,11 @@
-include 'homework1'
-include 'mongotest'
-include 'mysqltest'
-include 'userinfo-service-interface'
-include 'userinfo-service'
-include 'cinema-bo-service'
-
+include 'homework1',
+        'mongotest',
+        'mysqltest',
+        'userinfo-service-interface',
+        'userinfo-service',
+        'cinema-bo-service',
+        'async-test-service',
+        'scheduler-test-service',
+        'message-publisher-service',
+        'message-consumer-service',
+        'message-interface'
