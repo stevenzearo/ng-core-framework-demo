@@ -14,9 +14,6 @@ public class AsyncModule extends Module {
     protected void initialize() {
         ExecutorConfig executorConfig = executor();
         executorConfig.add("executor", 5);
-        bind(AsyncTask.class, "asyncTask1", new AsyncTask());
-        bind(AsyncTask.class, "asyncTask2", new AsyncTask());
-        bind(AsyncDelayTask.class, "asyncDelayTask", new AsyncDelayTask());
         AsyncService asyncService = bind(new AsyncService());
         onStartup(() -> {
             context.logManager.begin("async");
