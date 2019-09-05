@@ -2,14 +2,19 @@ package app;
 
 import app.domain.Province;
 import app.service.ProvinceService;
+import core.framework.json.JSON;
 import core.framework.module.App;
 import core.framework.module.SystemModule;
 import core.framework.mongo.module.MongoConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author steve
  */
 public class MongoServiceApp extends App {
+    private final Logger logger = LoggerFactory.getLogger(MongoServiceApp.class);
+
     @Override
     protected void initialize() {
         load(new SystemModule("sys.properties"));
@@ -19,9 +24,8 @@ public class MongoServiceApp extends App {
         load(new ProvinceModule());
         onStartup(() -> {
             ProvinceService provinceService = bean(ProvinceService.class);
-//            provinceService.addProvince();
-            Province sss = provinceService.getProvinceById("sss");
-            System.out.println(sss);
+            Province province = provinceService.getProvinceById("sss");
+            logger.warn(JSON.toJSON(province));
         });
     }
 }

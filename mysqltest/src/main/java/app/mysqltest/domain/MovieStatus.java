@@ -6,8 +6,8 @@ import core.framework.db.DBEnumValue;
  * @author steve
  */
 public enum MovieStatus {
-    @DBEnumValue(value = "ONLINE")
+    @DBEnumValue("ONLINE")
     ONLINE,
-    @DBEnumValue(value = "OFFLINE")
+    @DBEnumValue("OFFLINE")
     OFFLINE
 }

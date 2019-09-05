@@ -13,7 +13,6 @@ import java.time.LocalDate;
  */
 @Table(name = "user_infos")
 public class UserInfo {
-
     @PrimaryKey(autoIncrement = true)
     @NotNull
     @Column(name = "id")

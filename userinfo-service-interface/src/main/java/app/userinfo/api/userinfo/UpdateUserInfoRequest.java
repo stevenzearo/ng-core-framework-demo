@@ -1,8 +1,6 @@
 package app.userinfo.api.userinfo;
 
 import core.framework.api.json.Property;
-import core.framework.api.validate.NotBlank;
-import core.framework.api.validate.NotNull;
 
 import java.time.LocalDate;
 
@@ -10,7 +8,6 @@ import java.time.LocalDate;
  * @author steve
  */
 public class UpdateUserInfoRequest {
-
     @Property(name = "name")
     public String name;
 

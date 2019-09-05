@@ -1,7 +1,5 @@
 package app.cinema.web;
 
-import java.util.List;
-
 /**
  * @author steve
  */

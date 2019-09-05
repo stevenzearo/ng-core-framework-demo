@@ -2,11 +2,9 @@ package app.mysqltest.domain;
 
 import core.framework.api.validate.NotNull;
 import core.framework.db.Column;
-import core.framework.db.DBEnumValue;
 import core.framework.db.PrimaryKey;
 import core.framework.db.Table;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -15,7 +13,6 @@ import java.time.LocalDateTime;
 
 @Table(name = "movies")
 public class Movie {
-
     @PrimaryKey(autoIncrement = true)
     @NotNull
     @Column(name = "id")

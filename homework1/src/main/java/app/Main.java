@@ -8,8 +8,6 @@ import app.homework1.HomeworkServiceApp;
 
 public class Main {
     public static void main(String[] args) {
-        HomeworkServiceApp app = new HomeworkServiceApp();
-        app.start();
-
+        new HomeworkServiceApp().start();
     }
 }

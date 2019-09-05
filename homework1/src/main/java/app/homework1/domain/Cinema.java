@@ -14,20 +14,19 @@ public class Cinema {
     @PrimaryKey
     @NotNull
     @Column(name = "id")
-    public Integer cinemaId;
+    public Integer id;
 
     @Column(name = "name")
     @NotNull
-    public String cinemaName;
+    public String name;
 
     @Column(name = "address")
-    public String cinemaAddress;
+    public String address;
 
     @Column(name = "phone")
-    public String cinemaPhone;
+    public String phone;
 
     @Column(name = "zone_id")
     @NotNull
-    public Integer cinemaZoneId;
-
+    public Integer zoneId;
 }

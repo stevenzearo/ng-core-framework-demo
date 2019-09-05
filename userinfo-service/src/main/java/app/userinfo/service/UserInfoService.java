@@ -53,10 +53,8 @@ public class UserInfoService {
         return view(userInfo);
     }
 
-    public UserInfoView delete(Integer id) {
-        UserInfo userInfo = repository.get(id).orElseThrow(() -> new NotFoundException("userInfo not found, id = " + id));
+    public void delete(Integer id) {
         repository.delete(id);
-        return view(userInfo);
     }
 
     private UserInfoView view(UserInfo userInfo) {

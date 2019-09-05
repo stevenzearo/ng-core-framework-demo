@@ -10,7 +10,6 @@ import java.time.LocalDate;
  * @author steve
  */
 public class CreateUserInfoRequest {
-
     @NotNull
     @NotBlank
     @Property(name = "name")

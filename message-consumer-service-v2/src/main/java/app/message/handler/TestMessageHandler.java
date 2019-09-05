@@ -10,8 +10,9 @@ import org.slf4j.LoggerFactory;
  */
 public class TestMessageHandler implements MessageHandler<TestMessage> {
     private final Logger logger = LoggerFactory.getLogger(TestMessageHandler.class);
+
     @Override
     public void handle(String key, TestMessage value) {
-        logger.info("v2 received:"+value.key);
+        logger.info("v2 received:" + value.key);
     }
 }

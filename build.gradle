@@ -64,6 +64,7 @@ configure(project(':cinema-bo-service')) {
         implementation "core.framework:core-ng:${coreNGVersion}"
         runtimeOnly 'mysql:mysql-connector-java:8.0.15'
         implementation "core.framework:core-ng-mongo:${coreNGVersion}"
+        implementation project(':userinfo-service-interface')
     }
 }
 

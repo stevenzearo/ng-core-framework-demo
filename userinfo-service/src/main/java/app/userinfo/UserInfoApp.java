@@ -11,6 +11,5 @@ public class UserInfoApp extends App {
     protected void initialize() {
         load(new SystemModule("sys.properties"));
         load(new UserInfoModule());
-
     }
 }

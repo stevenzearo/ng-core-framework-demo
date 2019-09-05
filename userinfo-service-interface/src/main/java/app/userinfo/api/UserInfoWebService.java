@@ -37,6 +37,5 @@ public interface UserInfoWebService {
 
     @DELETE
     @Path("/user/:id")
-     void delete(@PathParam("id") Integer id);
-
+    void delete(@PathParam("id") Integer id);
 }

@@ -1,16 +1,12 @@
 package app.mysqltest.service;
 
 import app.mysqltest.domain.UserInfo;
-import core.framework.db.Query;
 import core.framework.db.Repository;
 import core.framework.inject.Inject;
-import core.framework.internal.db.QueryImpl;
 import core.framework.web.exception.NotFoundException;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalLong;
 
 /**
  * @author steve
@@ -21,12 +17,11 @@ public class UserInfoService {
 
     public Integer addUserInfo() {
         UserInfo userInfo = new UserInfo();
-        OptionalLong insert = userInfoRepository.insert(userInfo);
+        userInfoRepository.insert(userInfo);
         return userInfo.id;
     }
 
     public void updateUserInfo(UserInfo userInfo) {
-
         UserInfo userInfo2 = userInfoRepository.get(userInfo.id)
             .orElseThrow(() -> new NotFoundException("userInfo not found, userInfo = " + userInfo.id));
 

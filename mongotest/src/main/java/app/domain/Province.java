@@ -9,7 +9,6 @@ import core.framework.mongo.Id;
  */
 @Collection(name = "province")
 public class Province {
-
     @Id
     @Field(name = "id")
     public String id;

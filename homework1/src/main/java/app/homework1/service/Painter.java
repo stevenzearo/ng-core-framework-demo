@@ -14,10 +14,10 @@ public class Painter {
     private final Logger logger = LoggerFactory.getLogger(Painter.class);
 
     @Inject
-    private Brush brush;
+    Brush brush;
 
     public void draw() {
-        logger.warn(new ErrorCodeMarker("DRAW_ERROR_CODE").getName()+ " drawing picture...");
+        logger.warn(new ErrorCodeMarker("DRAW_ERROR_CODE").getName() + " drawing picture...");
         brush.print();
     }
 }

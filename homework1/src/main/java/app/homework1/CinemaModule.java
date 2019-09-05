@@ -2,7 +2,6 @@ package app.homework1;
 
 import app.homework1.domain.Cinema;
 import app.homework1.service.CinemaService;
-import core.framework.db.Repository;
 import core.framework.module.Module;
 
 /**

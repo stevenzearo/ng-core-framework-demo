@@ -3,7 +3,6 @@ package app.message;
 import app.message.api.TestMessage;
 import app.message.handler.TestMessageHandler;
 import core.framework.module.App;
-import core.framework.module.KafkaConfig;
 import core.framework.module.SystemModule;
 
 /**

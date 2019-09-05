@@ -2,8 +2,6 @@ package app.mysqltest.domain;
 
 import core.framework.api.validate.NotNull;
 import core.framework.db.Column;
-import core.framework.db.PrimaryKey;
-import core.framework.db.Table;
 
 /**
  * @author steve

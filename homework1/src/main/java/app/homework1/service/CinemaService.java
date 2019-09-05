@@ -10,7 +10,7 @@ import core.framework.web.exception.NotFoundException;
  */
 public class CinemaService {
     @Inject
-    private Repository<Cinema> cinemaRepository;
+    Repository<Cinema> cinemaRepository;
 
     public Cinema getCinemaById(Integer id) {
         return cinemaRepository.get(1).orElseThrow(() -> new NotFoundException("cinema not found, id =" + id));

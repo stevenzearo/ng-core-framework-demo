@@ -20,7 +20,8 @@ public class UserInfoWebServiceImpl implements UserInfoWebService {
     public UserInfoView create(CreateUserInfoRequest request) {
         return userInfoService.create(request);
     }
-
+    
+    @Override
     public SearchUserInfoResponse searchByNameFuzzily(SearchUserInfoRequest request) {
         return userInfoService.searchByNameFuzzily(request);
     }

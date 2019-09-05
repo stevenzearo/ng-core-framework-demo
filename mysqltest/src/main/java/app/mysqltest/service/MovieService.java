@@ -11,7 +11,6 @@ import java.util.List;
  * @author steve
  */
 public class MovieService {
-
     @Inject
     Repository<Movie> movieRepository;
 

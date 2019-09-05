@@ -25,6 +25,5 @@ public class UserInfoModule extends Module {
         http().bean(UserInfoView.class);
         bind(UserInfoService.class);
         api().service(UserInfoWebService.class, bind(UserInfoWebServiceImpl.class));
-
     }
 }

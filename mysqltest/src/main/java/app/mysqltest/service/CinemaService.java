@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class CinemaService {
     @Inject
-    private Database database;
+    Database database;
 
     public List<CinemaView> searchCinemaListByNameFuzzily(String cinemaName) {
         String sql = "SELECT cinemas.id, cinemas.`name` cinema_name, address, phone, zones.`name` zone_name, cities.`name` city_name"

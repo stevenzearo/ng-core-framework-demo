@@ -1,9 +1,7 @@
 package app.userinfo.api.userinfo;
 
 import core.framework.api.json.Property;
-import core.framework.api.validate.NotBlank;
 import core.framework.api.validate.NotNull;
-import core.framework.api.web.service.QueryParam;
 
 import java.time.LocalDate;
 
