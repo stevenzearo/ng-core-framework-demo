@@ -8,4 +8,5 @@ include 'homework1',
         'scheduler-test-service',
         'message-publisher-service',
         'message-consumer-service',
+        'message-consumer-service-v2',
         'message-interface'

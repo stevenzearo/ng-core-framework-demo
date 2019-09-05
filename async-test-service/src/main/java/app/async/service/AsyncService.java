@@ -6,6 +6,8 @@ import core.framework.async.Executor;
 import core.framework.inject.Inject;
 import core.framework.inject.Named;
 
+import java.time.Duration;
+
 /**
  * @author steve
  */
@@ -14,30 +16,15 @@ public class AsyncService {
     @Named("executor")
     Executor executor;
 
-    @Inject
-    @Named("asyncTask1")
-    AsyncTask asyncTask1;
+    AsyncTask asyncTask1 = new AsyncTask();
 
-    @Inject
-    @Named("asyncTask2")
-    AsyncTask asyncTask2;
+    AsyncTask asyncTask2 = new AsyncTask();
 
-    @Inject
-    @Named("asyncDelayTask")
-    AsyncDelayTask asyncDelayTask;
+    AsyncDelayTask asyncDelayTask = new AsyncDelayTask();
 
     public void executeTask() throws Exception {
-
-        System.out.println("hello, world!");
-        executor.submit("async", () -> {
-            try {
-                asyncTask1.execute();
-                asyncTask1.execute();
-                asyncDelayTask.execute();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        System.out.println("hello, world!");
+        executor.submit("async", asyncTask1);
+        executor.submit("async", asyncTask2);
+        executor.submit("async", asyncDelayTask, Duration.ofSeconds(5));
     }
 }

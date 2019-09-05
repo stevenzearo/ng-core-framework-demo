@@ -7,6 +7,8 @@ import core.framework.inject.Inject;
 import core.framework.inject.Named;
 import core.framework.scheduler.Job;
 
+import java.time.Duration;
+
 /**
  * @author steve
  */
@@ -15,24 +17,16 @@ public class SchedulerJob implements Job {
     @Named("executor")
     Executor executor;
 
-    @Inject
-    @Named("asyncTask1")
-    AsyncTask asyncTask1;
+    AsyncTask asyncTask1 = new AsyncTask();
 
-    @Inject
-    @Named("asyncTask2")
-    AsyncTask asyncTask2;
+    AsyncTask asyncTask2 = new AsyncTask();
 
-    @Inject
-    @Named("asyncDelayTask")
-    AsyncDelayTask asyncDelayTask;
+    AsyncDelayTask asyncDelayTask = new AsyncDelayTask();
 
     @Override
     public void execute() throws Exception {
-        executor.submit("async", () -> {
-            asyncTask1.execute();
-            asyncTask2.execute();
-            asyncDelayTask.execute();
-        });
+        executor.submit("async", asyncTask1);
+        executor.submit("async", asyncTask2);
+        executor.submit("async", asyncDelayTask, Duration.ofSeconds(20));
     }
 }

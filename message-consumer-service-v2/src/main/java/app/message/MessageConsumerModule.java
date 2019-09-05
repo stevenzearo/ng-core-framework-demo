@@ -10,9 +10,8 @@ import core.framework.module.Module;
 public class MessageConsumerModule extends Module {
     @Override
     protected void initialize() {
-        TestMessageHandler messageHandler = bean(TestMessageHandler.class);
+        /*TestMessageHandler messageHandler = bean(TestMessageHandler.class);
         TestMessage testMessage = new TestMessage();
-        testMessage.message = "java";
-        messageHandler.handle("topic1", testMessage);
+        messageHandler.handle("message1", testMessage);*/
     }
 }

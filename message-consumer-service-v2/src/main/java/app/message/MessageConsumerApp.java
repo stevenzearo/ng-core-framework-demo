@@ -14,7 +14,8 @@ public class MessageConsumerApp extends App {
     protected void initialize() {
         load(new SystemModule("sys.properties"));
         kafka().uri(requiredProperty("sys.kafka.uri"));
-        kafka().groupId("group2");
+        kafka().groupId("group1");
         kafka().subscribe("topic1", TestMessage.class, bind(TestMessageHandler.class));
+        load(new MessageConsumerModule());
     }
 }

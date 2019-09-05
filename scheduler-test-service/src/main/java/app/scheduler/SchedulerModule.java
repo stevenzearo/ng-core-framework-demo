@@ -3,6 +3,7 @@ package app.scheduler;
 import app.scheduler.job.SchedulerJob;
 import app.scheduler.task.AsyncDelayTask;
 import app.scheduler.task.AsyncTask;
+import app.scheduler.trigger.TestTrigger;
 import core.framework.module.ExecutorConfig;
 import core.framework.module.Module;
 import core.framework.module.SchedulerConfig;
@@ -23,6 +24,11 @@ public class SchedulerModule extends Module {
         bind(AsyncDelayTask.class, "asyncDelayTask", new AsyncDelayTask("asyncDelayTask"));
 
         SchedulerConfig schedulerConfig = schedule();
-        schedulerConfig.fixedRate("scheduler", bind(SchedulerJob.class), Duration.ofSeconds(3));
+        SchedulerJob schedulerJob = bind(SchedulerJob.class);
+
+        schedulerConfig.fixedRate("scheduler", schedulerJob, Duration.ofSeconds(3));
+
+        TestTrigger testTrigger = new TestTrigger();
+        schedulerConfig.trigger("trigger", schedulerJob, testTrigger);
     }
 }
