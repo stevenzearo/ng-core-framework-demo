@@ -1,8 +1,6 @@
 package app;
 
-import app.domain.Province;
-import app.service.ProvinceService;
-import core.framework.json.JSON;
+import app.domain.Address;
 import core.framework.module.App;
 import core.framework.module.SystemModule;
 import core.framework.mongo.module.MongoConfig;
@@ -21,11 +19,7 @@ public class MongoServiceApp extends App {
         String uri = requiredProperty("sys.mongo.uri");
         MongoConfig config = config(MongoConfig.class);
         config.uri(uri);
-        load(new ProvinceModule());
-        onStartup(() -> {
-            ProvinceService provinceService = bean(ProvinceService.class);
-            Province province = provinceService.getProvinceById("sss");
-            logger.warn(JSON.toJSON(province));
-        });
+        config.collection(Address.class);
+        load(new AddressModule());
     }
 }

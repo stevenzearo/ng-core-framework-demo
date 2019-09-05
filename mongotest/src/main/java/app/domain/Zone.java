@@ -2,18 +2,16 @@ package app.domain;
 
 import core.framework.mongo.Collection;
 import core.framework.mongo.Field;
+import org.bson.types.ObjectId;
 
 /**
  * @author steve
  */
-@Collection(name = "province")
-public class Province {
+@Collection(name = "zone")
+public class Zone {
     @Field(name = "id")
-    public String id;
+    public ObjectId id;
 
     @Field(name = "name")
     public String name;
-
-    @Field(name = "city")
-    public City city;
 }

@@ -6,14 +6,14 @@ import core.framework.mongo.Field;
 /**
  * @author steve
  */
-@Collection(name = "province")
-public class Province {
+@Collection(name = "city")
+public class City {
     @Field(name = "id")
     public String id;
 
     @Field(name = "name")
     public String name;
 
-    @Field(name = "city")
-    public City city;
+    @Field(name = "zone")
+    public Zone zone;
 }
