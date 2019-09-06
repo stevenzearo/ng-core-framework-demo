@@ -10,5 +10,8 @@ include 'homework1',
         'message-consumer-service',
         'message-consumer-service-v2',
         'message-interface',
-        'mongotest-interface'
+        'mongotest-interface',
+        'mongo-migration',
+        'db-migration-v',
+        'db-migration-r'
 
