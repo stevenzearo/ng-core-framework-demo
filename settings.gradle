@@ -9,4 +9,6 @@ include 'homework1',
         'message-publisher-service',
         'message-consumer-service',
         'message-consumer-service-v2',
-        'message-interface'
+        'message-interface',
+        'mongotest-interface'
+

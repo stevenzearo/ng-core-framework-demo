@@ -3,6 +3,7 @@ package app.mysqltest.service;
 import app.mysqltest.domain.UserInfo;
 import core.framework.db.Repository;
 import core.framework.inject.Inject;
+import core.framework.util.Strings;
 import core.framework.web.exception.NotFoundException;
 
 import java.time.LocalDate;
@@ -13,35 +14,33 @@ import java.util.List;
  */
 public class UserInfoService {
     @Inject
-    private Repository<UserInfo> userInfoRepository;
+    private Repository<UserInfo> repository;
 
-    public Integer addUserInfo() {
+    public Integer add() {
         UserInfo userInfo = new UserInfo();
-        userInfoRepository.insert(userInfo);
+        repository.insert(userInfo);
         return userInfo.id;
     }
 
-    public void updateUserInfo(UserInfo userInfo) {
-        UserInfo userInfo2 = userInfoRepository.get(userInfo.id)
-            .orElseThrow(() -> new NotFoundException("userInfo not found, userInfo = " + userInfo.id));
-
+    public void update(UserInfo userInfo) {
+        UserInfo userInfo2 = repository.get(userInfo.id)
+            .orElseThrow(() -> new NotFoundException(Strings.format("userInfo not found, id = {}", userInfo.id)));
         userInfo2.name = "steve";
         userInfo2.password = "123456";
         userInfo2.phone = "13812341234";
         userInfo2.birthday = LocalDate.now();
-        userInfoRepository.partialUpdate(userInfo);
+        repository.partialUpdate(userInfo);
     }
 
-    public void deleteUserInfo(Integer userId) {
-        userInfoRepository.delete(userId);
+    public void delete(Integer userId) {
+        repository.delete(userId);
     }
 
-    public UserInfo getUserInfoById(Integer userId) {
-        return userInfoRepository.get(userId).orElseThrow(() -> new NotFoundException("userInfo not found, where userId = " + userId));
+    public UserInfo get(Integer id) {
+        return repository.get(id).orElseThrow(() -> new NotFoundException(Strings.format("userInfo not found, id = {}", id)));
     }
 
-    public List<UserInfo> getUserInfoListByName(String name) {
-        return userInfoRepository.select("user_name LIKE ?", name);
+    public List<UserInfo> searchByName(String name) {
+        return repository.select("user_name LIKE ?", name);
     }
-
 }

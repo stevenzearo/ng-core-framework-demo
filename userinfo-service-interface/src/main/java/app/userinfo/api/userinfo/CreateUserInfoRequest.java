@@ -27,4 +27,7 @@ public class CreateUserInfoRequest {
     @NotBlank
     @Property(name = "phone")
     public String phone;
+
+    @Property(name = "img")
+    public String img;
 }

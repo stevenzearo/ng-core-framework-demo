@@ -10,5 +10,4 @@ public class CinemaBOIndexPage {
     public String welcomeMessage() {
         return "hello, " + name;
     }
-
 }

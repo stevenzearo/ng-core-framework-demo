@@ -32,7 +32,13 @@ public class CinemaAJAXController {
         return Response.bean(cinemaViewList);
     }
 
-    public CinemaWebView view(CinemaView cinemaView) {
+    public Response getUserInfo(Request request) {
+        UserInfoView userInfoView = userInfoWebService.get(1);
+        logger.warn(JSON.toJSON(userInfoView));
+        return Response.bean(userInfoView);
+    }
+
+    private CinemaWebView view(CinemaView cinemaView) {
         CinemaWebView cinemaWebView = new CinemaWebView();
         cinemaWebView.id = cinemaView.id;
         cinemaWebView.cinemaName = cinemaView.cinemaName;
@@ -41,12 +47,5 @@ public class CinemaAJAXController {
         cinemaWebView.zoneName = cinemaView.zoneName;
         cinemaWebView.cityName = cinemaView.cityName;
         return cinemaWebView;
-    }
-
-
-    public Response getUserInfo(Request request) {
-        UserInfoView userInfoView = userInfoWebService.get(1);
-        logger.warn(JSON.toJSON(userInfoView));
-        return Response.bean(userInfoView);
     }
 }

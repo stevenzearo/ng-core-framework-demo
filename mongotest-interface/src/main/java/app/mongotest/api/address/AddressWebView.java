@@ -1,9 +1,8 @@
-package app.web.province;
+package app.mongotest.api.address;
 
 import core.framework.api.json.Property;
 import core.framework.api.validate.NotBlank;
 import core.framework.api.validate.NotNull;
-import org.bson.types.ObjectId;
 
 /**
  * @author steve
@@ -28,7 +27,7 @@ public class AddressWebView {
     public String cityName;
 
     @Property(name = "zone_id")
-    public ObjectId zoneId;
+    public String zoneId;
 
     @Property(name = "zone_name")
     public String zoneName;

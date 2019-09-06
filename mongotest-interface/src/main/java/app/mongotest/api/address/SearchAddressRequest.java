@@ -1,4 +1,4 @@
-package app.web.province;
+package app.mongotest.api.address;
 
 import core.framework.api.json.Property;
 import core.framework.api.validate.Max;

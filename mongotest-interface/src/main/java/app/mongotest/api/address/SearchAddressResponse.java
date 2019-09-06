@@ -1,6 +1,5 @@
-package app.web.province;
+package app.mongotest.api.address;
 
-import app.domain.Address;
 import core.framework.api.json.Property;
 
 import java.util.List;
@@ -13,5 +12,5 @@ public class SearchAddressResponse {
     public Long total = 0L;
 
     @Property(name = "address_list")
-    public List<Address> addressList;
+    public List<AddressWebView> addressList;
 }

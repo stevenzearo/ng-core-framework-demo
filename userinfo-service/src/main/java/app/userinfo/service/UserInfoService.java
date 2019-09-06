@@ -22,7 +22,14 @@ public class UserInfoService {
     Repository<UserInfo> repository;
 
     public UserInfoView create(CreateUserInfoRequest request) {
-        return null;
+        UserInfo userInfo = new UserInfo();
+        userInfo.name = request.name;
+        userInfo.password = request.password;
+        userInfo.birthday = request.birthday;
+        userInfo.phone = request.phone;
+        userInfo.img = request.img;
+        repository.insert(userInfo);
+        return view(userInfo);
     }
 
     public SearchUserInfoResponse searchByNameFuzzily(SearchUserInfoRequest request) {
@@ -40,17 +47,16 @@ public class UserInfoService {
     }
 
     public UserInfoView get(Integer id) {
-        return view(repository.get(id).orElseThrow(() -> new NotFoundException("userInfo not found, id = " + id)));
+        return view(repository.get(id).orElseThrow(() -> new NotFoundException(Strings.format("userInfo not found, id = {}", id))));
     }
 
-    public UserInfoView update(Integer id, UpdateUserInfoRequest request) {
-        UserInfo userInfo = repository.get(id).orElseThrow(() -> new NotFoundException("userInfo not found, id = " + id));
+    public void update(Integer id, UpdateUserInfoRequest request) {
+        UserInfo userInfo = repository.get(id).orElseThrow(() -> new NotFoundException(Strings.format("userInfo not found, id = {}", id)));
         userInfo.name = request.name;
         userInfo.password = request.password;
         userInfo.birthday = request.birthday;
         userInfo.img = request.img;
         repository.partialUpdate(userInfo);
-        return view(userInfo);
     }
 
     public void delete(Integer id) {
@@ -62,6 +68,7 @@ public class UserInfoService {
         userInfoView.id = userInfo.id;
         userInfoView.name = userInfo.name;
         userInfoView.password = userInfo.password;
+        userInfoView.phone = userInfo.phone;
         userInfoView.birthday = userInfo.birthday;
         userInfoView.img = userInfo.img;
         return userInfoView;

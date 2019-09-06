@@ -33,11 +33,18 @@ configure(project(':mysqltest')) {
         testImplementation "core.framework:core-ng-test:${coreNGVersion}"
     }
 }
-
+configure(project(':mongotest-interface')) {
+    apply from: file("${rootDir}/gradle/lib.gradle")
+    dependencies {
+        implementation "core.framework:core-ng:${coreNGVersion}"
+        implementation "core.framework:core-ng-mongo:${coreNGVersion}"
+    }
+}
 configure(project(':mongotest')) {
     apply from: file("${rootDir}/gradle/app.gradle")
     dependencies {
         implementation "core.framework:core-ng:${coreNGVersion}"
+        implementation project(':mongotest-interface')
         implementation "core.framework:core-ng-mongo:${coreNGVersion}"
         testImplementation group: 'junit', name: 'junit', version: '4.12'
     }
