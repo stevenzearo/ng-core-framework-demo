@@ -6,6 +6,6 @@ CREATE TABLE IF NOT EXISTS `movies`  (
   `language` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `introduce` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `online_time` datetime(0) NULL DEFAULT NULL,
-  `status` enum('online','offline') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '状态（online下线，offline上线）',
+  `status` enum('online','offline') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;

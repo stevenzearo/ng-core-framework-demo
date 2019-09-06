@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `movies`
     `minutes`     int(11)                                                              NULL DEFAULT NULL,
     `language`    varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci              NULL DEFAULT NULL,
     `online_time` datetime(0)                                                          NULL DEFAULT NULL,
-    `status`      enum ('ONLINE','OFFLINE') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '状态（online下线，offline上线）',
+    `status`      enum ('ONLINE','OFFLINE') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 2
