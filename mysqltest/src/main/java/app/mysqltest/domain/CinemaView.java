@@ -6,7 +6,6 @@ import core.framework.db.Column;
 /**
  * @author steve
  */
-
 public class CinemaView {
     @NotNull
     @Column(name = "id")

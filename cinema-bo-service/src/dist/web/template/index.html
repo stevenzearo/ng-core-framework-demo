@@ -9,13 +9,20 @@
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 <script type="application/javascript">
     function test() {
-        return 0;
+        $.ajax({
+            url: "http://localhost:8443/ajax/cinema?name=SFC"
+            , type: "GET"
+            , dataType: "text"
+            , success: function (result) {
+                alert(result);
+            }
+        });
     }
 </script>
 <!--<script src="/static/js/main.js"></script>-->
 
 <p>hello <span c:text="name"></span>!</p>
-
+<button onclick="test()">get cinema list</button>
 <p c:text="welcomeMessage()"></p>
 
 <!--<p>this is msg: <span m:text="key.hello"></span></p>-->

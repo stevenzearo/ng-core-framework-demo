@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 /**
  * @author steve
  */
-
 @Table(name = "movies")
 public class Movie {
     @PrimaryKey(autoIncrement = true)

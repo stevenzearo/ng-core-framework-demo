@@ -12,7 +12,6 @@ import core.framework.module.Module;
 import java.util.List;
 
 import static core.framework.http.HTTPMethod.GET;
-import static core.framework.http.HTTPMethod.POST;
 
 /**
  * @author steve
@@ -34,7 +33,7 @@ public class CinemaBOModule extends Module {
 
         http().bean(CinemaWebView.class);
         CinemaAJAXController cinemaAJAXController = bind(CinemaAJAXController.class);
-        http().route(POST, "/ajax/cinema", cinemaAJAXController::searchCinemaListByNameFuzzilyAJAX);
+        http().route(GET, "/ajax/cinema", cinemaAJAXController::searchCinemaListByNameFuzzilyAJAX);
         http().route(GET, "/ajax/cinema/user", cinemaAJAXController::getUserInfo);
     }
 }

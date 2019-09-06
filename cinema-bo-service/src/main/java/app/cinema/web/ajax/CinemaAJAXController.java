@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -27,13 +28,17 @@ public class CinemaAJAXController {
     private final Logger logger = LoggerFactory.getLogger(CinemaAJAXController.class);
 
     public Response searchCinemaListByNameFuzzilyAJAX(Request request) {
-        String name = request.pathParam("name");
+        Map<String, String> map = request.queryParams();
+        String name = map.get("name");
         List<CinemaWebView> cinemaViewList = cinemaBOService.searchCinemaListByName(name).stream().map(this::view).collect(Collectors.toList());
-        return Response.bean(cinemaViewList);
+        return Response.text(JSON.toJSON(cinemaViewList));
     }
 
     public Response getUserInfo(Request request) {
-        UserInfoView userInfoView = userInfoWebService.get(1);
+        Map<String, String> map = request.queryParams();
+        String idStr = map.get("id");
+        Integer id = Integer.valueOf(idStr);
+        UserInfoView userInfoView = userInfoWebService.get(id);
         logger.warn(JSON.toJSON(userInfoView));
         return Response.bean(userInfoView);
     }
