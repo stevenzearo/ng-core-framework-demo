@@ -2,13 +2,15 @@ package app.cinema.domain;
 
 import core.framework.api.validate.NotNull;
 import core.framework.db.Column;
+import core.framework.db.PrimaryKey;
 import core.framework.db.Table;
 
 /**
  * @author steve
  */
-public class CinemaView {
-    @NotNull
+@Table(name = "cinemas")
+public class Cinema {
+    @PrimaryKey
     @Column(name = "id")
     public Integer id;
 
@@ -24,6 +26,9 @@ public class CinemaView {
 
     @Column(name = "zone_name")
     public String zoneName;
+
+    @Column(name = "zone_id")
+    public String zoneId;
 
     @Column(name = "city_name")
     public String cityName;
