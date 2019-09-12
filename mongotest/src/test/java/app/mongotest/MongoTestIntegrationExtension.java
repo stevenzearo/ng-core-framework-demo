@@ -9,5 +9,5 @@ import org.junit.jupiter.api.extension.ExtendWith;
  */
 @ExtendWith(IntegrationExtension.class)
 @Context(module = TestModule.class)
-public class MongoTestIntegrationExtention {
+public class MongoTestIntegrationExtension {
 }

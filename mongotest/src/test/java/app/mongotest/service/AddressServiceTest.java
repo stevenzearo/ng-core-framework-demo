@@ -1,6 +1,6 @@
 package app.mongotest.service;
 
-import app.mongotest.MongoTestIntegrationExtention;
+import app.mongotest.MongoTestIntegrationExtension;
 import app.mongotest.api.address.AddressWebView;
 import app.mongotest.api.address.CreateAddressRequest;
 import app.mongotest.api.address.ReplaceAddressRequest;
@@ -8,23 +8,17 @@ import app.mongotest.api.address.SearchAddressRequest;
 import app.mongotest.api.address.SearchAddressResponse;
 import app.mongotest.api.address.UpdateAddressRequest;
 import app.service.AddressService;
-import app.mongotest.TestModule;
 import core.framework.inject.Inject;
-import core.framework.test.Context;
-import core.framework.test.IntegrationExtension;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author steve
  */
-class AddressServiceTest extends MongoTestIntegrationExtention {
+class AddressServiceTest extends MongoTestIntegrationExtension {
     @Inject
     AddressService service;
 
