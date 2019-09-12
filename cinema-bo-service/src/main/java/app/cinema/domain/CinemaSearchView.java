@@ -2,7 +2,6 @@ package app.cinema.domain;
 
 import core.framework.api.validate.NotNull;
 import core.framework.db.Column;
-import core.framework.db.Table;
 
 /**
  * @author steve

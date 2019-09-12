@@ -1,6 +1,5 @@
 package app.cinema;
 
-import app.cinema.CinemaBOApp;
 import core.framework.test.module.AbstractTestModule;
 
 /**

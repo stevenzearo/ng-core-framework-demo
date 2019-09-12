@@ -9,8 +9,6 @@ import core.framework.json.JSON;
 import core.framework.log.ActionLogContext;
 import core.framework.web.Request;
 import core.framework.web.Response;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Map;
@@ -29,7 +27,7 @@ public class CinemaAJAXController {
     public Response searchCinemaListByNameFuzzilyAJAX(Request request) {
         Map<String, String> map = request.queryParams();
         String name = map.get("name");
-        ActionLogContext.put("searchName",name);
+        ActionLogContext.put("searchName", name);
         List<CinemaWebView> cinemaViewList = cinemaBOService.searchCinemaListByName(name).stream().map(this::view).collect(Collectors.toList());
         return Response.text(JSON.toJSON(cinemaViewList));
     }

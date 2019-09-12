@@ -1,16 +1,12 @@
 package app.homework1.service;
 
 import app.homework1.Homework1IntegrationExtension;
-import app.homework1.TestModule;
 import app.homework1.domain.Cinema;
 import core.framework.db.Repository;
 import core.framework.inject.Inject;
-import core.framework.test.Context;
-import core.framework.test.IntegrationExtension;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.OptionalLong;
 
@@ -37,7 +33,7 @@ class CinemaServiceTest extends Homework1IntegrationExtension {
         cinema.zoneId = 1;
         OptionalLong insert = repository.insert(cinema);
         if (insert.isPresent())
-        cinema.id = (int) insert.getAsLong();
+            cinema.id = (int) insert.getAsLong();
 
     }
 
