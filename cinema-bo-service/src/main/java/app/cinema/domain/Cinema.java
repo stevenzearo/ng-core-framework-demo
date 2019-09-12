@@ -10,7 +10,7 @@ import core.framework.db.Table;
  */
 @Table(name = "cinemas")
 public class Cinema {
-    @PrimaryKey
+    @PrimaryKey(autoIncrement = true)
     @Column(name = "id")
     public Integer id;
 
@@ -24,12 +24,6 @@ public class Cinema {
     @Column(name = "phone")
     public String phone;
 
-    @Column(name = "zone_name")
-    public String zoneName;
-
     @Column(name = "zone_id")
     public String zoneId;
-
-    @Column(name = "city_name")
-    public String cityName;
 }

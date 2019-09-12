@@ -7,7 +7,7 @@ import core.framework.db.Table;
 /**
  * @author steve
  */
-public class CinemaView {
+public class CinemaSearchView {
     @NotNull
     @Column(name = "id")
     public Integer id;

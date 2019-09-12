@@ -11,13 +11,12 @@ import core.framework.db.Table;
 
 @Table(name = "cinemas")
 public class Cinema {
-    @PrimaryKey
-    @NotNull
+    @PrimaryKey(autoIncrement = true)
     @Column(name = "id")
     public Integer id;
 
-    @Column(name = "name")
     @NotNull
+    @Column(name = "name")
     public String name;
 
     @Column(name = "address")
@@ -26,7 +25,7 @@ public class Cinema {
     @Column(name = "phone")
     public String phone;
 
-    @Column(name = "zone_id")
     @NotNull
+    @Column(name = "zone_id")
     public Integer zoneId;
 }

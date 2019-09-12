@@ -25,11 +25,11 @@ public interface AddressWebService {
     void create(CreateAddressRequest request);
 
     @PUT
-    @Path("/address/:id")
+    @Path("/address/update/:id")
     void update(@PathParam("id") String id, UpdateAddressRequest request);
 
     @PUT
-    @Path("/address/:id")
+    @Path("/address/replace/:id")
     void replace(@PathParam("id") String id, ReplaceAddressRequest request);
 
     @GET

@@ -19,6 +19,8 @@ import core.framework.util.Strings;
 import core.framework.web.exception.NotFoundException;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -29,6 +31,8 @@ import java.util.stream.Collectors;
 public class AddressService {
     @Inject
     MongoCollection<Address> mongoCollection;
+
+    private final Logger logger = LoggerFactory.getLogger(AddressService.class);
 
     public void create(CreateAddressRequest request) {
         Address address = new Address();
@@ -85,12 +89,16 @@ public class AddressService {
     }
 
     public void update(String id, UpdateAddressRequest request) {
-        Bson idBson = Filters.eq("id", id);
+        Address address = mongoCollection.get(id).orElseThrow(() -> new NotFoundException(Strings.format("address not found, id = ", id), "ADDRESS_NOT_FOUND"));
+        Bson provinceNameFilter = Filters.eq("province.name", address.province.name);
+        Bson cityNameFilter = Filters.eq("province.city.name", address.province.city.name);
+        Bson zoneNameFilter = Filters.eq("province.city.zone.name", address.province.city.zone.name);
+        Bson combineFilter = Filters.and(provinceNameFilter, cityNameFilter, zoneNameFilter);
         Bson provinceNameSet = Updates.set("province.name", request.provinceName);
         Bson cityNameSet = Updates.set("province.city.name", request.cityName);
         Bson zoneNameSet = Updates.set("province.city.zone.name", request.zoneName);
-        Bson combine = Updates.combine(provinceNameSet, cityNameSet, zoneNameSet);
-        mongoCollection.update(idBson, combine);
+        Bson combineUpdate = Updates.combine(provinceNameSet, cityNameSet, zoneNameSet);
+        mongoCollection.update(combineFilter, combineUpdate);
     }
 
     public void replace(String id, ReplaceAddressRequest request) {
@@ -102,6 +110,8 @@ public class AddressService {
         address.province.id = UUID.randomUUID().toString();
         address.province.name = request.provinceName;
         address.province.city.id = UUID.randomUUID().toString();
+        address.province.city.name = request.cityName;
+        address.province.city.zone.name = request.zoneName;
         address.province.city.zone.id = new ObjectId();
         mongoCollection.replace(address);
     }

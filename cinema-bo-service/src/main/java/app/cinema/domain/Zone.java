@@ -10,8 +10,7 @@ import core.framework.db.Table;
  */
 @Table(name = "zones")
 public class Zone {
-    @PrimaryKey
-    @NotNull
+    @PrimaryKey(autoIncrement = true)
     @Column(name = "id")
     public Integer id;
 

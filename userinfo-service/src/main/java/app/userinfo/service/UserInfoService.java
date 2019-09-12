@@ -39,7 +39,7 @@ public class UserInfoService {
         query.skip(request.skip);
         query.limit(request.limit);
         if (!Strings.isBlank(request.name)) {
-            query.where("`name` LIKE ?", Strings.format("%{}%", request.name));
+            query.where("name LIKE ?", Strings.format("%{}%", request.name));
         }
         response.userInfoViewList = query.fetch().stream().map(this::view).collect(Collectors.toList());
         response.total = query.count();

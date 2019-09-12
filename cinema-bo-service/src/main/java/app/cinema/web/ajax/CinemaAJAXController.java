@@ -1,6 +1,6 @@
 package app.cinema.web.ajax;
 
-import app.cinema.domain.CinemaView;
+import app.cinema.domain.CinemaSearchView;
 import app.cinema.service.CinemaBOService;
 import app.userinfo.api.UserInfoWebService;
 import app.userinfo.api.userinfo.UserInfoView;
@@ -43,14 +43,14 @@ public class CinemaAJAXController {
         return Response.bean(userInfoView);
     }
 
-    private CinemaWebView view(CinemaView cinemaView) {
+    private CinemaWebView view(CinemaSearchView cinemaSearchView) {
         CinemaWebView cinemaWebView = new CinemaWebView();
-        cinemaWebView.id = cinemaView.id;
-        cinemaWebView.cinemaName = cinemaView.cinemaName;
-        cinemaWebView.address = cinemaView.address;
-        cinemaWebView.phone = cinemaView.phone;
-        cinemaWebView.zoneName = cinemaView.zoneName;
-        cinemaWebView.cityName = cinemaView.cityName;
+        cinemaWebView.id = cinemaSearchView.id;
+        cinemaWebView.cinemaName = cinemaSearchView.cinemaName;
+        cinemaWebView.address = cinemaSearchView.address;
+        cinemaWebView.phone = cinemaSearchView.phone;
+        cinemaWebView.zoneName = cinemaSearchView.zoneName;
+        cinemaWebView.cityName = cinemaSearchView.cityName;
         return cinemaWebView;
     }
 }

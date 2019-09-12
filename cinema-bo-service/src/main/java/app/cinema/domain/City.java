@@ -9,10 +9,13 @@ import core.framework.db.Table;
  */
 @Table(name = "cities")
 public class City {
-    @PrimaryKey
+    @PrimaryKey(autoIncrement = true)
     @Column(name = "id")
     public Integer cityId;
 
     @Column(name = "name")
     public String name;
+
+    @Column(name = "city_category_id")
+    public Integer cityCategoryName;
 }

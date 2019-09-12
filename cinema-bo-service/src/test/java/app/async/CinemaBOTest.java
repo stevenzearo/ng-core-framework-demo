@@ -1,6 +1,6 @@
 package app.async;
 
-import app.cinema.domain.CinemaView;
+import app.cinema.domain.CinemaSearchView;
 import app.cinema.service.CinemaBOService;
 import core.framework.inject.Inject;
 import core.framework.test.Context;
@@ -22,13 +22,8 @@ class CinemaBOTest {
 
     @Test
     void test() {
-        List<CinemaView> sfc = cinemaBOService.searchCinemaListByName("%SFC%");
+        List<CinemaSearchView> sfc = cinemaBOService.searchCinemaListByName("%SFC%");
         sfc.forEach(System.out::println);
     }
-
-    @Test
-    void test2() {
-        cinemaBOService.insert();
-        cinemaBOService.get();
-    }
 }
+
