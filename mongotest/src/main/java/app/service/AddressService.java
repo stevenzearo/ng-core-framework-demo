@@ -32,9 +32,7 @@ public class AddressService {
     @Inject
     MongoCollection<Address> mongoCollection;
 
-    private final Logger logger = LoggerFactory.getLogger(AddressService.class);
-
-    public void create(CreateAddressRequest request) {
+    public String create(CreateAddressRequest request) {
         Address address = new Address();
         address.id = UUID.randomUUID().toString();
         address.province = new Province();
@@ -47,6 +45,7 @@ public class AddressService {
         address.province.city.zone.id = new ObjectId();
         address.province.city.zone.name = request.zoneName;
         mongoCollection.insert(address);
+        return address.id;
     }
 
     public AddressWebView get(String id) {

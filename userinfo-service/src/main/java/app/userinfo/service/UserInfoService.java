@@ -12,6 +12,7 @@ import core.framework.inject.Inject;
 import core.framework.util.Strings;
 import core.framework.web.exception.NotFoundException;
 
+import java.util.OptionalLong;
 import java.util.stream.Collectors;
 
 /**
@@ -28,7 +29,10 @@ public class UserInfoService {
         userInfo.birthday = request.birthday;
         userInfo.phone = request.phone;
         userInfo.img = request.img;
-        repository.insert(userInfo);
+        OptionalLong insert = repository.insert(userInfo);
+        if (insert.isPresent()) {
+            userInfo.id = (int) insert.getAsLong();
+        }
         return view(userInfo);
     }
 

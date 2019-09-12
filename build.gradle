@@ -51,7 +51,7 @@ configure(project(':mongotest')) {
         implementation "core.framework:core-ng:${coreNGVersion}"
         implementation project(':mongotest-interface')
         implementation "core.framework:core-ng-mongo:${coreNGVersion}"
-        testImplementation group: 'junit', name: 'junit', version: '4.12'
+        testImplementation "core.framework:core-ng-mongo-test:${coreNGVersion}"
     }
 }
 

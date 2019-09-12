@@ -1,4 +1,4 @@
-package app.service;
+package app.mongotest;
 
 import app.MongoServiceApp;
 import core.framework.mongo.module.MongoConfig;

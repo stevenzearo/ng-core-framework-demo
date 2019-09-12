@@ -1,33 +1,31 @@
 package app.userinfo.service;
 
-import app.userinfo.TestModule;
+import app.userinfo.UserInfoIntegrationExtension;
 import app.userinfo.api.userinfo.CreateUserInfoRequest;
 import app.userinfo.api.userinfo.SearchUserInfoRequest;
 import app.userinfo.api.userinfo.SearchUserInfoResponse;
 import app.userinfo.api.userinfo.UpdateUserInfoRequest;
+import app.userinfo.api.userinfo.UserInfoView;
 import core.framework.inject.Inject;
-import core.framework.json.JSON;
-import core.framework.test.Context;
-import core.framework.test.IntegrationExtension;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * @author steve
  */
-@ExtendWith(IntegrationExtension.class)
-@Context(module = TestModule.class)
-class UserInfoServiceTest {
+
+class UserInfoServiceTest extends UserInfoIntegrationExtension {
     @Inject
     UserInfoService service;
 
-    private final Logger logger = LoggerFactory.getLogger(UserInfoServiceTest.class);
+    private int userInfoId = 0;
 
     @BeforeEach
     void before() {
@@ -36,7 +34,9 @@ class UserInfoServiceTest {
         request.password = "1234";
         request.birthday = LocalDateTime.of(1997, 5, 8, 0, 0).toLocalDate();
         request.phone = "12312341234";
-        service.create(request);
+        UserInfoView userInfoView = service.create(request);
+        userInfoId = userInfoView.id;
+
     }
 
     @Test
@@ -44,29 +44,29 @@ class UserInfoServiceTest {
         SearchUserInfoRequest request = new SearchUserInfoRequest();
         request.name = "s";
         SearchUserInfoResponse response = service.searchByNameFuzzily(request);
-        response.userInfoViewList.forEach(x -> logger.warn(JSON.toJSON(x)));
+        assertThat(response.userInfoViewList).size().isGreaterThan(0);
     }
 
     @Test
     void get() {
-        logger.warn(JSON.toJSON(service.get(1)));
+        UserInfoView userInfoView = service.get(userInfoId);
+        assertThat(userInfoView.name).isEqualTo("joseph");
+        assertThat(userInfoView.password).isEqualTo("1234");
+        assertThat(userInfoView.birthday).isEqualTo(LocalDateTime.of(1997, 5, 8, 0, 0).toLocalDate());
+        assertThat(userInfoView.phone).isEqualTo("12312341234");
     }
 
     @Test
     void update() {
         UpdateUserInfoRequest request = new UpdateUserInfoRequest();
         request.password = "1234";
-        service.update(1, request);
-        logger.warn(JSON.toJSON(service.get(1)));
-    }
-
-    @Test
-    void delete() {
-        service.delete(1);
+        service.update(userInfoId, request);
+        UserInfoView userInfoView = service.get(userInfoId);
+        assertThat(userInfoView.password).isEqualTo(request.password);
     }
 
     @AfterEach
     void after() {
-        service.delete(1);
+        service.delete(userInfoId);
     }
 }

@@ -1,5 +1,6 @@
 package app.cinema.web.handler;
 
+import core.framework.api.http.HTTPStatus;
 import core.framework.web.ErrorHandler;
 import core.framework.web.Request;
 import core.framework.web.Response;
@@ -23,6 +24,7 @@ public class CinemaBoNotFoundErrorHandler implements ErrorHandler {
             Arrays.stream(e.getStackTrace()).forEach(x -> {
                 logger.error(x.toString());
             });
+            return Optional.of(Response.bean(null).status(HTTPStatus.BAD_REQUEST));
         }
         return Optional.empty();
     }

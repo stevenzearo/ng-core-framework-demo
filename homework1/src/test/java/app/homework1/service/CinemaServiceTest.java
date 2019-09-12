@@ -1,11 +1,13 @@
 package app.homework1.service;
 
+import app.homework1.Homework1IntegrationExtension;
 import app.homework1.TestModule;
 import app.homework1.domain.Cinema;
 import core.framework.db.Repository;
 import core.framework.inject.Inject;
 import core.framework.test.Context;
 import core.framework.test.IntegrationExtension;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,16 +19,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * @author steve
  */
-@ExtendWith(IntegrationExtension.class)
-@Context(module = TestModule.class)
-class CinemaServiceTest {
+class CinemaServiceTest extends Homework1IntegrationExtension {
     @Inject
     CinemaService service;
 
     @Inject
     Repository<Cinema> repository;
 
-    Cinema cinema;
+    private Cinema cinema;
 
     @BeforeEach
     void insert() {
@@ -44,5 +44,10 @@ class CinemaServiceTest {
     @Test
     void getCinemaById() {
         assertThat(service.getCinemaById(1)).isEqualToComparingFieldByField(cinema);
+    }
+
+    @AfterEach
+    void clean() {
+        repository.delete(cinema.id);
     }
 }

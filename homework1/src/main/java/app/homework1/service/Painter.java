@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
  * @author steve
  */
 public class Painter {
-
     private final Logger logger = LoggerFactory.getLogger(Painter.class);
 
     @Inject

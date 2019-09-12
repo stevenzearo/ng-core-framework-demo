@@ -16,7 +16,6 @@ public class MysqlTestApp extends App {
         load(new SystemModule("sys.properties"));
         load(new MovieModule());
         load(new CinemaModule());
-        load(new UserInfoModule());
         onStartup(() -> {
             CinemaService cinemaService = bean(CinemaService.class);
             List<CinemaView> cinemaViewList = cinemaService.searchCinemaListByNameFuzzily("SFC");

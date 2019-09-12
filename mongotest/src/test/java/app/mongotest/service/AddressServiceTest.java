@@ -1,44 +1,50 @@
-package app.service;
+package app.mongotest.service;
 
+import app.mongotest.MongoTestIntegrationExtention;
 import app.mongotest.api.address.AddressWebView;
 import app.mongotest.api.address.CreateAddressRequest;
 import app.mongotest.api.address.ReplaceAddressRequest;
 import app.mongotest.api.address.SearchAddressRequest;
 import app.mongotest.api.address.SearchAddressResponse;
 import app.mongotest.api.address.UpdateAddressRequest;
+import app.service.AddressService;
+import app.mongotest.TestModule;
 import core.framework.inject.Inject;
-import core.framework.json.JSON;
 import core.framework.test.Context;
 import core.framework.test.IntegrationExtension;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * @author steve
  */
-@ExtendWith(IntegrationExtension.class)
-@Context(module = TestModule.class)
-class AddressServiceTest {
-    private final Logger logger = LoggerFactory.getLogger(AddressServiceTest.class);
-
+class AddressServiceTest extends MongoTestIntegrationExtention {
     @Inject
     AddressService service;
 
-    @Test
+    String addressId;
+
+    @BeforeEach
     void create() {
         CreateAddressRequest request = new CreateAddressRequest();
         request.provinceName = "oho";
         request.cityName = "rsa";
         request.zoneName = "zeera";
-        service.create(request);
+        addressId = service.create(request);
     }
 
     @Test
     void get() {
-        AddressWebView addressWebView = service.get("86a827cc-73f8-46a0-97c8-3f2da9a532df");
-        logger.warn(JSON.toJSON(addressWebView));
+        AddressWebView addressWebView = service.get(addressId);
+        assertThat(addressWebView.provinceName).isEqualTo("oho");
+        assertThat(addressWebView.cityName).isEqualTo("rsa");
+        assertThat(addressWebView.zoneName).isEqualTo("zeera");
     }
 
     @Test
@@ -50,12 +56,7 @@ class AddressServiceTest {
         searchAddressRequest.limit = 5;
         searchAddressRequest.skip = 0;
         SearchAddressResponse search = service.search(searchAddressRequest);
-        search.addressList.forEach(x -> logger.warn(JSON.toJSON(x)));
-    }
-
-    @Test
-    void delete() {
-        service.delete("86a827cc-73f8-46a0-97c8-3f2da9a532df");
+        assertThat(search.addressList).size().isEqualByComparingTo(1);
     }
 
     @Test
@@ -64,9 +65,11 @@ class AddressServiceTest {
         request.cityName = "newYork";
         request.provinceName = "bbb";
         request.zoneName = "sss";
-        service.update("927ce102-c10c-4e27-8e8c-d810b251d3d1", request);
-        AddressWebView addressWebView = service.get("927ce102-c10c-4e27-8e8c-d810b251d3d1");
-        logger.warn(JSON.toJSON(addressWebView));
+        service.update(addressId, request);
+        AddressWebView addressWebView = service.get(addressId);
+        assertThat(addressWebView.provinceName).isEqualTo(request.provinceName);
+        assertThat(addressWebView.cityName).isEqualTo(request.cityName);
+        assertThat(addressWebView.zoneName).isEqualTo(request.zoneName);
     }
 
     @Test
@@ -75,8 +78,16 @@ class AddressServiceTest {
         request.cityName = "hello";
         request.provinceName = "world";
         request.zoneName = "steve";
-        service.replace("927ce102-c10c-4e27-8e8c-d810b251d3d1", request);
-        AddressWebView addressWebView = service.get("927ce102-c10c-4e27-8e8c-d810b251d3d1");
-        logger.warn(JSON.toJSON(addressWebView));
+        service.replace(addressId, request);
+        AddressWebView addressWebView = service.get(addressId);
+        assertThat(addressWebView.cityName).isEqualTo(request.cityName);
+        assertThat(addressWebView.provinceName).isEqualTo(request.provinceName);
+        assertThat(addressWebView.zoneName).isEqualTo(request.zoneName);
+
+    }
+
+    @AfterEach
+    void delete() {
+        service.delete(addressId);
     }
 }

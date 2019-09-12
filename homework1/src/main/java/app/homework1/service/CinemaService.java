@@ -13,7 +13,7 @@ public class CinemaService {
     Repository<Cinema> cinemaRepository;
 
     public Cinema getCinemaById(Integer id) {
-        return cinemaRepository.get(1).orElseThrow(() -> new NotFoundException("cinema not found, id =" + id));
+        return cinemaRepository.get(id).orElseThrow(() -> new NotFoundException("cinema not found, id =" + id));
     }
 
 }

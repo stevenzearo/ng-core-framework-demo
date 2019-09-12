@@ -6,6 +6,7 @@ import app.userinfo.api.UserInfoWebService;
 import app.userinfo.api.userinfo.UserInfoView;
 import core.framework.inject.Inject;
 import core.framework.json.JSON;
+import core.framework.log.ActionLogContext;
 import core.framework.web.Request;
 import core.framework.web.Response;
 import org.slf4j.Logger;
@@ -25,11 +26,10 @@ public class CinemaAJAXController {
     @Inject
     UserInfoWebService userInfoWebService;
 
-    private final Logger logger = LoggerFactory.getLogger(CinemaAJAXController.class);
-
     public Response searchCinemaListByNameFuzzilyAJAX(Request request) {
         Map<String, String> map = request.queryParams();
         String name = map.get("name");
+        ActionLogContext.put("searchName",name);
         List<CinemaWebView> cinemaViewList = cinemaBOService.searchCinemaListByName(name).stream().map(this::view).collect(Collectors.toList());
         return Response.text(JSON.toJSON(cinemaViewList));
     }
@@ -39,7 +39,7 @@ public class CinemaAJAXController {
         String idStr = map.get("id");
         Integer id = Integer.valueOf(idStr);
         UserInfoView userInfoView = userInfoWebService.get(id);
-        logger.warn(JSON.toJSON(userInfoView));
+        ActionLogContext.put("getUserInfo", id);
         return Response.bean(userInfoView);
     }
 
