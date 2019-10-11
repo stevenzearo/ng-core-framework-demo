@@ -25,7 +25,6 @@ public class SchedulerModule extends Module {
 
         SchedulerConfig schedulerConfig = schedule();
         SchedulerJob schedulerJob = bind(SchedulerJob.class);
-
         schedulerConfig.fixedRate("scheduler", schedulerJob, Duration.ofSeconds(3));
 
         TestTrigger testTrigger = new TestTrigger();

@@ -9,14 +9,14 @@ import org.bson.Document;
  */
 public class Main {
     public static void main(String[] args) {
-        MongoMigration initMigration = new MongoMigration("sys.properties", "sys.mongo.uri");
+        MongoMigration initMigration = new MongoMigration("sys.properties", "sys.mongo.adminURI");
         initMigration.migrate(mongo -> {
             mongo.runCommand(new Document().append("setParameter", 1).append("notablescan", 1));
         });
 
         MongoMigration createMigration = new MongoMigration("sys.properties");
         createMigration.migrate(mongo -> {
-            mongo.createIndex("test", Indexes.ascending("name"));
+            mongo.createIndex("address", Indexes.ascending("_id", "province.name"));
         });
     }
 }

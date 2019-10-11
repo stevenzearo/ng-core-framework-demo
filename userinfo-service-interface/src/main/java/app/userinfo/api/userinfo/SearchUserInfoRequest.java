@@ -23,9 +23,11 @@ public class SearchUserInfoRequest {
     @Deprecated
     @Property(name = "password")
     public String password;
+
     @Deprecated
     @Property(name = "birthday")
     public LocalDate birthday;
+
     @Deprecated
     @Property(name = "phone")
     public String phone;

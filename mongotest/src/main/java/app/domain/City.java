@@ -6,7 +6,6 @@ import core.framework.mongo.Field;
 /**
  * @author steve
  */
-@Collection(name = "city")
 public class City {
     @Field(name = "id")
     public String id;

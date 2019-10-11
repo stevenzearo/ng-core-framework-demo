@@ -12,5 +12,4 @@ public class CinemaBOController {
         indexPage.name = "gradle";
         return Response.html("/template/index.html", indexPage, "en_US");
     }
-
 }

@@ -7,7 +7,6 @@ import org.bson.types.ObjectId;
 /**
  * @author steve
  */
-@Collection(name = "zone")
 public class Zone {
     @Field(name = "id")
     public ObjectId id;
