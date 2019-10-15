@@ -11,12 +11,12 @@ public class Test {
         List<Integer> integers = List.of(1, 2, 3, 4);
         integers.stream().filter(x -> x >= 2).forEach(System.out::print);
         Timer timer = new Timer();
-        timer.schedule(new Scheduler(() -> System.out.println("hello, world!"), 3L), 300);
+        timer.schedule(new Scheduler((a) -> System.out.println("hello, world!"), 3L), 300);
     }
 
     @FunctionalInterface
     interface Task {
-        void run();
+        void run(Object... args);
     }
 
     static class Scheduler extends TimerTask {
