@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 public class CinemaAJAXController {
     @Inject
     CinemaBOService cinemaBOService;
-
     @Inject
     UserInfoWebService userInfoWebService;
 
