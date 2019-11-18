@@ -2,9 +2,11 @@ package random;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * @author steve
@@ -13,19 +15,14 @@ public class RandomTest {
     private static final Random RANDOM = new SecureRandom();
 
     public static void main(String[] args) {
+        List<String> a = List.of("a", "b", "c", "d", "e", "f", "g", "h", "i", "j","aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", "ii", "jj");
 
-        int maxRestaurantNum = 7;
+        HashSet<String> strings = new HashSet<>();
         for (int i = 0; i < 100; i++) {
-            double rate = (double) (RANDOM.nextInt(maxRestaurantNum) + 1) / (double) maxRestaurantNum;
-
-            System.out.println(rate);
+            strings.addAll(RandomUtil.randomT(a, 0.4));
+            System.out.println(strings.size());
         }
-
-        List<Integer> originList = List.of(1, 2, 4, 5, 3);
-        List<Integer> newList = new ArrayList<>(originList);
-        newList.remove((Integer) 4);
-        System.out.println(originList);
-        System.out.println(newList);
-        System.out.println(UUID.randomUUID().getMostSignificantBits());
+        System.out.println(strings.size());
+        strings.forEach(System.out::println);
     }
 }

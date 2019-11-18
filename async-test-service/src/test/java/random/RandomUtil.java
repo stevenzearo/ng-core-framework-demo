@@ -2,6 +2,7 @@ package random;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -15,17 +16,17 @@ public class RandomUtil {
         List<T> result = new ArrayList<>();
         if (rate > 1d) return result;
         if (rate < 0d) return result;
-        int randomIndexBound = (int) Math.round(list.size() * rate - 0.5d); // using rate to get dataset num
-        return randomT(list, randomIndexBound, result);
+        int resultNum = (int) Math.round(list.size() * rate - 0.5d); // using rate to get dataset num
+        return randomT(list, resultNum, result);
     }
 
-
-    private static <T> List<T> randomT(List<T> list, Integer randomIndexBound, List<T> result) {
-        T o = list.get(RANDOM.nextInt(randomIndexBound));
+    private static <T> List<T> randomT(List<T> previousList, Integer resultNum, List<T> result) {
+        List<T> list = new ArrayList<>(previousList);
+        T o = list.get(RANDOM.nextInt(previousList.size()));
         list.remove(o);
         result.add(o);
-        if (randomIndexBound > 1)
-            return randomT(list, randomIndexBound - 1, result);
+        if (result.size() < resultNum)
+            return randomT(list, resultNum, result);
         else return result;
     }
 
